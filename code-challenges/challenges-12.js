@@ -72,12 +72,12 @@ const cvsFiltration = (arr) => {
     let full_name = "";
     let arr2 = [];
     for (let i = 0; i < arr.length; i++) {
-        if(arr[i].firstName == null){
+        if(arr[i].firstName == ""){
             full_name = arr[i].LastName;
-        }else if (arr[i].lastName === null){
+        }else if (arr[i].LastName === ""){
             full_name = arr[i].firstName;
         }else {
-            full_name = `${arr[i].firstName} ${arr[i].lastName}`;
+            full_name = `${arr[i].firstName} ${arr[i].LastName}`;
         }
         if(arr[i].yearsOfExperience > 4 && arr[i].tech === 'JS'){
             arr2.push({fullName : full_name , tech : arr[i].tech});
