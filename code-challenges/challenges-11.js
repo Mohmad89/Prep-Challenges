@@ -125,12 +125,17 @@ function fullName(arr) {
 // -------------
 
 function gradesAvg(arr) {
-    let averag = 0;
+    let sum = 0;
+    let counter = 0;
     for (let i = 0; i < arr.length; i++) {
-        arr[i].gradsList.map((val) => {
-            averag += val;
-        })
-        arr[i].avg = averag / arr[i].gradsList.length;
+        
+        arr[i].gradsList.map(function(val , index){
+            sum += val;
+            counter++;
+        });
+        arr[i].avg= sum / counter ;
+        sum = 0;
+        counter = 0;
     }
     return arr;
 }

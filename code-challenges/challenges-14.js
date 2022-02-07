@@ -74,7 +74,14 @@ const replaceWords = (str) => {
 // ------------------------
 
 const arrToStr = (arr) => {
-    arr.join()
+    let count= 0;
+    for(let i = 0; i < arr.length; i++){
+        count++;
+        if(count % 5 === 1){
+            arr.join(",",i);
+        }
+        }
+    return arr;
 }
 
 // 5) ---------------------
