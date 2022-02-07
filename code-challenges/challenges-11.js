@@ -135,7 +135,7 @@ function gradesAvg(arr) {
     return arr;
 }
 
-
+    
 // 4) ---------------------
 //
 // Using the previous function result, determine if the student pass or failed,
