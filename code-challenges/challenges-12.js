@@ -70,20 +70,21 @@ const oddFiltration = (arr) => {
 
 const cvsFiltration = (arr) => {
     let full_name = "";
-    let arr2 = [];
-    for (let i = 0; i < arr.length; i++) {
-        if(arr[i].firstName == ""){
-            full_name = arr[i].LastName;
-        }else if (arr[i].LastName === ""){
-            full_name = arr[i].firstName;
+    let result = [];
+    
+    arr.filter(function(val){
+        if(val.firstName == null){
+            full_name = val.LastName;
+        }else if (val.LastName == null){
+            full_name = val.firstName;
         }else {
-            full_name = `${arr[i].firstName} ${arr[i].LastName}`;
+            full_name = `${val.firstName} ${val.LastName}`;
         }
-        if(arr[i].yearsOfExperience > 4 && arr[i].tech === 'JS'){
-            arr2.push({fullName : full_name , tech : arr[i].tech});
-        }
-    }
-    return arr2;
+        if(val.yearsOfExperience > 4 && val.tech === 'JS')
+        result.push({fullName : full_name , tech : val.tech})
+        return true;
+    });
+    return result;
 }
 
 // 3) ---------------------
@@ -119,16 +120,18 @@ const vowelsFiltration = (arr) => {
 
 const skillComparison = (arr1, arr2) => {
     let result = [];
-    for (let i = 0; i < arr1.length; i++) {
-        if(!(arr2.includes(arr1[i]))){
-            result.push(arr1[i]);
+    arr1.filter(function (val){
+        if(!(arr2.includes(val))){
+            result.push(val);
         }
-    }
-    for(let i = 0; i < arr2.length; i++){
-        if(!(arr1.includes(arr2[i]))){
-            result.push(arr2[i]);
+        return true;
+    })
+    arr2.filter(function (val){
+        if(!(arr1.includes(val))){
+            result.push(val);
         }
-    }
+        return true;
+    })
     return result;
 }
 
