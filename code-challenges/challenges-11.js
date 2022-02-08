@@ -136,6 +136,7 @@ function gradesAvg(arr) {
         averag = 0;
         counter = 0;
     }
+    console.log(arr);
     return arr;
 }
 
@@ -214,6 +215,8 @@ function studentsResult(arr) {
             arr[i].result = 'Failed';
         }
     }
+    
+    console.log(arr);
     return arr;
 }
 
