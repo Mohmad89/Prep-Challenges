@@ -24,9 +24,9 @@ const LastWord = (str) => {
     if (str.lastIndexOf(" ") == -1){
         index = 0;
     }else{
-        index = str.lastIndexOf(" ") ;
+        index = str.lastIndexOf(" ")+1 ;
     }
-    return str.slice(index+1);
+    return str.substring(index);
 }
 
 // 2) ---------------------
@@ -57,11 +57,11 @@ const LastWord_2 = (str) => {
 const replaceWords = (str) => {
     let arr = str.split(' ');
     if(arr.indexOf('I') != -1) {
-        arr.splice(arr.indexOf('I'), arr.indexOf('I')+1, 'We');
-    } else if(arr.indexOf('was') != -1) {    
-        arr.splice(arr.indexOf('was'), arr.indexOf('was'), 'were');
-    } else if(arr.indexOf('am') != -1) {
-        arr.splice(arr.indexOf('am'), arr.indexOf('am'),'are');
+        arr.splice(arr.indexOf('I'), 1, 'We');
+    }  if(arr.indexOf('was') != -1) {    
+        arr.splice(arr.indexOf('was'), 1, 'were');
+    }  if(arr.indexOf('am') != -1) {
+        arr.splice(arr.indexOf('am'), 1,'are');
     }  
     return arr.join(' ');
 }
@@ -74,7 +74,13 @@ const replaceWords = (str) => {
 // ------------------------
 
 const arrToStr = (arr) => {
-    arr.join()
+    for (let i = 0; i < arr.length; i++){
+        if((i+1) % 5 === 0 ){
+            arr[i] = `${arr[i]},`;
+        }
+    }
+    let str = arr.join(' ');
+    return str;
 }
 
 // 5) ---------------------
@@ -90,9 +96,39 @@ const arrToStr = (arr) => {
 // ------------------------
 
 const letterCounter = (str) => {
-    // write your code here
+    let arr_words = str.split(" ");
+    let arr_char  =[];
+    let resulte   =[];
+    let count = 1;
+    let first = "";
+    let next  = "";
+    let strs  = "";
 
-    
+    for(let i = 0; i < arr_words.length; i++){
+        arr_char = arr_words[i].split("");
+        for(let j = 0; j< arr_char.length; j++){
+            first = arr_char[j];
+            next = arr_char[j+1];
+            
+            if (first === next){
+            count++;
+            continue;
+            }
+            
+            if (count === 0){
+                count++;
+                resulte.push (arr_char[j]+count);
+            }else {
+                resulte.push( arr_char[j]+count);
+            }
+            count = 1;
+        }
+        if(i < arr_words.length-1){
+            resulte.push(' ');
+        }
+    }
+    strs = resulte.join("");
+    return strs;
 }
 
 
