@@ -60,10 +60,14 @@ const objectCounter = (obj) => {
 const stringReverse = (str) => {
     let text = str.split(" ");
     let arr2 = [];
-    let result = text.reduce(function (acc, val) {
-        acc.push(val);
-        return acc;
+    let result= "";
+    text.reduce(function (acc, val) {
+        arr2.unshift(val);
     }, 0);
+    arr2.reduce(function (acc, val) {
+        result += val+" ";
+    }, 0);
+    result = result.slice(0 , -1);
     return result;
 }
 
@@ -106,25 +110,26 @@ const stringReverse = (str) => {
 // ------------------------
 
 const statistics = (obj) => {
+      let res = {};
     let count_james = 0;
     let count_jada = 0;
     let count_bailey = 0;
     let counter = "";
-    for(let i = 0; i < obj.length; i++){
-        counter = obj[i].votes_To;
-        if(counter === "James"){
+    obj.reduce(function (acc, val){
+        if(val.votes_To === "James"){
             count_james += 1;
-        }else if (counter === "Jada"){
+        } if (val.votes_To === "Jade"){
             count_jada += 1;
-        }else if (counter === "Bailey"){
+        } if (val.votes_To === "Bailey"){
             count_bailey += 1;
         }
-    };
-    let res ={
-        James: count_james,
-        Jada: count_jada,
-        Bailey: count_bailey
-    }
+    }, 0)
+
+    res.James = count_james;
+    res.Jade = count_jada;
+    res.Bailey = count_bailey;
+    
+    return res;
     
 }
 
