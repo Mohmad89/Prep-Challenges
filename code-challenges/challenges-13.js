@@ -114,6 +114,7 @@ const statistics = (obj) => {
     let count_james = 0;
     let count_jada = 0;
     let count_bailey = 0;
+    let count_chad =0;
     let counter = "";
     obj.reduce(function (acc, val){
         if(val.votes_To === "James"){
@@ -122,13 +123,23 @@ const statistics = (obj) => {
             count_jada += 1;
         } if (val.votes_To === "Bailey"){
             count_bailey += 1;
+        } if (val.votes_To === "Chad"){
+            count_chad += 1;
         }
     }, 0)
 
+    if (count_james > 0){
     res.James = count_james;
+    }
+    if (count_jada > 0){
     res.Jade = count_jada;
+    }
+    if (count_bailey > 0){
     res.Bailey = count_bailey;
-    
+    }
+    if (count_chad > 0){
+    res.Chad = count_chad;
+    }
     return res;
     
 }
